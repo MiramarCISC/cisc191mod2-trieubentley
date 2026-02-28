@@ -1,4 +1,5 @@
 package edu.sdccd.cisc191;
 
-public class StudentFilter {
+public interface StudentFilter {
+    boolean test(Student s);
 }
