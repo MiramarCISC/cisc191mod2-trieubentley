@@ -1,42 +1,47 @@
 package edu.sdccd.cisc191;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        // TODO create students
-        Student[] students = new Student[4];
-        students[0] = new Student("t man", 3.9, 1);
-        students[1] = new Student("t man1", 3.8, 2);
-        students[2] = new Student("t man2", 3.7, 3);
-        students[3] = new Student("t man3", 3.6, 4);
-        // TODO demonstrate filtering
-        System.out.println("Students above 3.7 GPA");
+        List<Student> students = new ArrayList<>();
 
-        for (Student s : students) {
-            if (((StudentFilter) student -> student.getGpa() > 3.7).test(s)) {
-                System.out.println(s);
-            }
-        }
-        // TODO demonstrate sorting
-                Arrays.sort(students,
-                        (a, b) -> Double.compare(b.getGpa(), a.getGpa()));
+        // Create students
+        students.add(new Student("Alice", 3.8, 101));
+        students.add(new Student("Bob", 2.9, 102));
+        students.add(new Student("Charlie", 3.5, 103));
+        students.add(new Student("Diana", 3.9, 104));
 
-                System.out.println("Sorted by GPA");
+        System.out.println("Original List:");
 
-                for (Student s : students) {
-                    System.out.println(s);
-                }
-        // TODO print average GPA
-        double total = 0;
+        students.forEach(System.out::println);
 
-        for (Student s : students) {
-            total += s.getGpa();
+        // Filtering using lambda
+        List<Student> highGpaStudents =
+                StudentAnalyzer.filter(students, s -> s.getGpa() >= 3.5);
+
+        System.out.println("\nFiltered (GPA >= 3.5):");
+
+        for (Student s : highGpaStudents) {
+            System.out.println(s);
         }
 
-        double average = total / students.length;
+        // Sorting using lambda comparator
+        StudentAnalyzer.sort(students,
+                (s1, s2) -> Double.compare(s2.getGpa(), s1.getGpa()));
 
-        System.out.println("Average GPA: " + average);
+        System.out.println("\nSorted by GPA (Descending):");
+
+        for (Student s : students) {
+            System.out.println(s);
+        }
+
+        // Average GPA
+        double avg = StudentAnalyzer.averageGpa(students);
+
+        System.out.println("\nAverage GPA: " + avg);
     }
 }
