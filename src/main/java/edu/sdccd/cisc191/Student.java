@@ -1,5 +1,24 @@
 package edu.sdccd.cisc191;
 
+<<<<<<< HEAD
+public class Student  {
+    private final String name;
+    private final double gpa;
+    private final int id;
+
+    public Student(String name, double gpa, int id) {
+
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name is empty");
+        }
+
+        if (gpa < 0 || gpa > 4.0) {
+            throw new IllegalArgumentException("Gpa exceeds range");
+        }
+
+        if (id <= 0) {
+            throw new IllegalArgumentException("Id does not work");
+
 public class Student {
 
     private String name;
@@ -15,6 +34,7 @@ public class Student {
         }
         if (id <= 0) {
             throw new IllegalArgumentException("ID must be positive.");
+>>>>>>> 59ed6af6589cd63b4f5344e6e6212f742223952c
         }
 
         this.name = name;
@@ -36,6 +56,17 @@ public class Student {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
+        return "name: " + name +
+                " ID: " + id +
+                " GPA: " + gpa;
+    }
+}
+
+
+
+=======
         return "Student{name='" + name + "', gpa=" + gpa + ", id=" + id + "}";
     }
 }
+>>>>>>> 59ed6af6589cd63b4f5344e6e6212f742223952c
